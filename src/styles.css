@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  border: 2px solid green;
   font-family: "Roboto";
 }
 
@@ -294,11 +295,11 @@ tag-btn:hover {
 
 .modal-title {
   margin-top: 100px;
-  font-size: 48px;
+  font-size: 3rem;
 }
 
 .modal-cost {
-  font-size: 24px;
+  font-size: 1.5rem;
   margin-top: 100px;
   margin-bottom: 20px;
   font-weight: 300;
@@ -317,20 +318,20 @@ tag-btn:hover {
 }
 
 .modal-ingredients {
-  font-size: 28px;
+  font-size: 1.75rem;
   margin-bottom: 10px;
   margin-top: 20px;
 }
 
 .modal-directions {
-  font-size: 32px;
+  font-size: 2rem;
 }
 .modal-directions-list {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .modal-tags {
-  font-size: 24px;
+  font-size: 1.2rem;
 }
 
 li {
