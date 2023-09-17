@@ -274,7 +274,7 @@ p {
   width: 50px;
   border-radius: 15px;
   margin: 2px;
-  filter: grayscale(50%);
+  filter: grayscale(60%);
 }
 
 tag-btn:hover {
