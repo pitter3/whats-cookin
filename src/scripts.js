@@ -222,7 +222,7 @@ function handleTagButtonClick(event) {
   }
 
     // if user clicks on view saved recipes
-  if (clickedTag === savedRecipesBtn ) {
+  if (clickedTag === savedRecipesBtn) {
     const filteredRecipeIDByTag = returnFilteredTag(recipeData, tagClicked);
     displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
     // if user clicks on a tag
@@ -233,7 +233,7 @@ function handleTagButtonClick(event) {
   } else if (!clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View Saved Recipes") {
     displayFilteredRecipes(recipeData, currentUser.recipesToCook)
     // if user clicks on tag while in view saved recipes
-  } else if (clickedTag.nextSibling.classList.contains("bold") &&savedRecipesBtn.innerHTML === "View All") {
+  } else if (clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View All") {
     const filteredRecipeIDByTag = returnFilteredTag(
       currentUser.recipesToCook,
       tagClicked
