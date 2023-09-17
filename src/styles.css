@@ -256,9 +256,9 @@ p {
   border: none;
   border-radius: 100rem;
   padding: 0.8rem;
-  font-size: 1.2rem;
-  width: 15rem;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  width: 17rem;
+  margin-bottom: 30px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
   font-weight: 300;
 }
@@ -352,4 +352,10 @@ li {
 
 .is-not-saved {
   background-color: #e5e7e9;
+}
+
+.none-saved {
+  color: red;
+  padding-top: 22px;
+  font-size: 16px;
 }

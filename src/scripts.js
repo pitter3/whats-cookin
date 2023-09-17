@@ -118,20 +118,46 @@ function createRandomUser(users) {
 
   return currentUser;
 }
+
 const viewSavedRecipes = (recipeData) => {
-  if (savedRecipesBtn.innerText === "View Saved Recipes") {
-    displayRecipes(currentUser.recipesToCook, "Remove Recipe");
-    savedRecipesBtn.innerText = "View All";
-    displayTags(currentUser.recipesToCook);
-  } else {
-    displayFilteredRecipes(recipeData, currentUser.recipesToCook);
-    savedRecipesBtn.innerText = "View Saved Recipes";
-    displayTags(recipeData);
-  }
+    if (savedRecipesBtn.innerText === "View Saved Recipes") {
+      displayRecipes(currentUser.recipesToCook, "Remove Recipe");
+      savedRecipesBtn.innerText = "View All";
+      displayTags(currentUser.recipesToCook);
+    } else {
+      displayFilteredRecipes(recipeData, currentUser.recipesToCook);
+      savedRecipesBtn.innerText = "View Saved Recipes";
+      displayTags(recipeData);
+    }
 };
 
-savedRecipesBtn.addEventListener("click", () => {
+let isMsgDisplayed = false; // initialize message
+let isBtnDisabled = false; // initialize button status
+
+savedRecipesBtn.addEventListener("click", (event) => {
+  if (!isBtnDisabled) {
+   if (currentUser.recipesToCook.length === 0 && !isMsgDisplayed && savedRecipesBtn.innerText === "View Saved Recipes") {
+     const pTag = document.createElement("p");
+     pTag.className = "none-saved";
+     pTag.textContent = `You don't have any recipes saved!`;
+ 
+     savedRecipesBtn.appendChild(pTag);
+     // display message
+     isMsgDisplayed = true;
+     // disable button
+     isBtnDisabled = true;
+ 
+     setTimeout(() => {
+       pTag.remove();
+       // reset message
+       isMsgDisplayed = false;
+       // reset button
+       isBtnDisabled = false;
+     }, 2000)
+    } else {
   viewSavedRecipes(recipeData);
+    }
+  }
 });
 
 recipeDisplay.addEventListener("click", (event) => {
