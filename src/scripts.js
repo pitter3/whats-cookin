@@ -192,6 +192,16 @@ inputIngredient.addEventListener("keyup", (event) => {
 });
 
 tagButtons.addEventListener("click", (event) => {
+  handleTagButtonClick(event);
+});
+
+tagButtons.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    handleTagButtonClick(event);
+  }
+});
+
+function handleTagButtonClick(event) {
   let tagClicked;
   tagClicked = event.target.id;
 
@@ -222,9 +232,18 @@ tagButtons.addEventListener("click", (event) => {
     );
     displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
   }
+}
+
+
+recipeDisplay.addEventListener("click", handleRecipeDisplayEvent);
+
+recipeDisplay.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    handleRecipeDisplayEvent(event);
+  }
 });
 
-recipeDisplay.addEventListener("click", (event) => {
+function handleRecipeDisplayEvent(event) {
   idClicked = event.target.id;
   if (idClicked.length === 6) {
     createModal();
@@ -235,9 +254,19 @@ recipeDisplay.addEventListener("click", (event) => {
     updateIngredients();
     updateTags();
   }
-});
+}
 
 closeBtn.addEventListener("click", function () {
+  closeDropdownAndModal();
+});
+
+closeBtn.addEventListener("keydown", function (event) {
+  if (event.key === "Enter" || event.keyCode === 13) {
+    closeDropdownAndModal();
+  }
+});
+
+function closeDropdownAndModal() {
   const currencyDropDown = document.querySelector("#currencies-dropdown");
   const currencyLabel = document.querySelector(".choose-currency");
   if (currencyDropDown && currencyLabel) {
@@ -246,7 +275,7 @@ closeBtn.addEventListener("click", function () {
   }
 
   modalOverlay.classList.remove("open-modal");
-});
+}
 
 modalOverlay.addEventListener("click", (event) => {
   const currencyDropDown = document.querySelector("#currencies-dropdown");
@@ -339,15 +368,19 @@ function updateTags() {
 function createCurrencyDropdown() {
   const currencyDropDown = document.createElement("div");
   currencyDropDown.innerHTML = `<label for="currencies" class="choose-currency">Choose a currency</label>
-  <select name="currencies" class="currencies-dropdown" id="currencies-dropdown">
-    <option value="USD">Choose Currency</option>
-    <option value="usd">USD</option>
-    <option value="cad">CAD</option>
-    <option value="eur">EUROS</option>
-    <option value="jpy">JAPANESE YEN</option>
-  </select>`;
+    <select tabindex="0" name="currencies" class="currencies-dropdown" id="currencies-dropdown">
+      <option value="USD">Choose Currency</option>
+      <option value="usd">USD</option>
+      <option value="cad">CAD</option>
+      <option value="eur">EUROS</option>
+      <option value="jpy">JAPANESE YEN</option>
+    </select>`;
   modalCost.insertAdjacentElement("afterend", currencyDropDown);
+  
+  const selectMenu = document.querySelector("#currencies-dropdown");
+  selectMenu.focus();
 }
+
 
 document.addEventListener("change", (event) => {
   if (event.target.classList.contains("currencies-dropdown")) {
