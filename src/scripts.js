@@ -212,9 +212,9 @@ function handleTagButtonClick(event) {
 
     allTagButtons.forEach((tagButton) => {
       if (tagButton === clickedTag) {
-        console.log(tagButton.nextSibling)
+        // console.log(tagButton.nextSibling)
         clickedTag.nextSibling.classList.toggle("bold");
-        console.log("after click:", clickedTag.nextSibling)
+        // console.log("after click:", clickedTag.nextSibling)
       } else {
         tagButton.nextSibling.classList.remove("bold")
       }
