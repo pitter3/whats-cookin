@@ -239,10 +239,12 @@ function handleTagButtonClick(event) {
     allTagButtons.forEach((tagButton) => {
       if (tagButton === clickedTag) {
         // console.log(tagButton.nextSibling)
-        clickedTag.nextSibling.classList.toggle("bold");
+        clickedTag.nextSibling.classList.toggle('bold');
+        clickedTag.classList.toggle('tag-btn-active')
         // console.log("after click:", clickedTag.nextSibling)
       } else {
-        tagButton.nextSibling.classList.remove("bold")
+        tagButton.nextSibling.classList.remove('bold')
+        tagButton.classList.remove('tag-btn-active')
       }
     });
   }
