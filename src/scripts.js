@@ -118,20 +118,46 @@ function createRandomUser(users) {
 
   return currentUser;
 }
+
 const viewSavedRecipes = (recipeData) => {
-  if (savedRecipesBtn.innerText === "View Saved Recipes") {
-    displayRecipes(currentUser.recipesToCook, "Remove Recipe");
-    savedRecipesBtn.innerText = "View All";
-    displayTags(currentUser.recipesToCook);
-  } else {
-    displayFilteredRecipes(recipeData, currentUser.recipesToCook);
-    savedRecipesBtn.innerText = "View Saved Recipes";
-    displayTags(recipeData);
-  }
+    if (savedRecipesBtn.innerText === "View Saved Recipes") {
+      displayRecipes(currentUser.recipesToCook, "Remove Recipe");
+      savedRecipesBtn.innerText = "View All";
+      displayTags(currentUser.recipesToCook);
+    } else {
+      displayFilteredRecipes(recipeData, currentUser.recipesToCook);
+      savedRecipesBtn.innerText = "View Saved Recipes";
+      displayTags(recipeData);
+    }
 };
 
-savedRecipesBtn.addEventListener("click", () => {
+let isMsgDisplayed = false; // initialize message
+let isBtnDisabled = false; // initialize button status
+
+savedRecipesBtn.addEventListener("click", (event) => {
+  if (!isBtnDisabled) {
+   if (currentUser.recipesToCook.length === 0 && !isMsgDisplayed && savedRecipesBtn.innerText === "View Saved Recipes") {
+     const pTag = document.createElement("p");
+     pTag.className = "none-saved";
+     pTag.textContent = `You don't have any recipes saved!`;
+ 
+     savedRecipesBtn.appendChild(pTag);
+     // display message
+     isMsgDisplayed = true;
+     // disable button
+     isBtnDisabled = true;
+ 
+     setTimeout(() => {
+       pTag.remove();
+       // reset message
+       isMsgDisplayed = false;
+       // reset button
+       isBtnDisabled = false;
+     }, 2000)
+    } else {
   viewSavedRecipes(recipeData);
+    }
+  }
 });
 
 recipeDisplay.addEventListener("click", (event) => {
@@ -212,28 +238,42 @@ function handleTagButtonClick(event) {
 
     allTagButtons.forEach((tagButton) => {
       if (tagButton === clickedTag) {
-        tagButton.parentNode.classList.add("bold");
+        // console.log(tagButton.nextSibling)
+        clickedTag.nextSibling.classList.toggle("bold");
+        // console.log("after click:", clickedTag.nextSibling)
       } else {
-        tagButton.parentNode.classList.remove("bold");
+        tagButton.nextSibling.classList.remove("bold")
       }
     });
   }
 
-  if (event.target === savedRecipesBtn) {
+    // if user clicks on view saved recipes
+  if (clickedTag === savedRecipesBtn) {
     const filteredRecipeIDByTag = returnFilteredTag(recipeData, tagClicked);
     displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
-  } else if (tagClicked !== "" && savedRecipesBtn.innerHTML !== "View All") {
+    // if user clicks on a tag
+  } else if (clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View Saved Recipes") {
     const filteredRecipeIDByTag = returnFilteredTag(recipeData, tagClicked);
-    displayRecipes(filteredRecipeIDByTag, "Save Recipe");
-  } else if (tagClicked !== "" && savedRecipesBtn.innerHTML === "View All") {
+    displayFilteredRecipes(filteredRecipeIDByTag, currentUser.recipesToCook)
+    // if user deselects tag while in view all
+  } else if (!clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View Saved Recipes") {
+    displayFilteredRecipes(recipeData, currentUser.recipesToCook)
+    // if user clicks on tag while in view saved recipes
+  } else if (clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View All") {
     const filteredRecipeIDByTag = returnFilteredTag(
       currentUser.recipesToCook,
       tagClicked
     );
-    displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
+    // displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
+    displayFilteredRecipes(filteredRecipeIDByTag, currentUser.recipesToCook)
+    // if user deselects tag while in view saved recipes
+  } else if (!clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View All") {
+    displayFilteredRecipes(currentUser.recipesToCook, currentUser.recipesToCook)
+  } else {
+    // if no tags are selected
+    displayFilteredRecipes(recipeData, currentUser.recipesToCook)
   }
 }
-
 
 recipeDisplay.addEventListener("click", handleRecipeDisplayEvent);
 
