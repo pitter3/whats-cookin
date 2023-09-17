@@ -239,10 +239,10 @@ function handleTagButtonClick(event) {
       tagClicked
     );
     // displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
-    displayFilteredRecipes(currentUser.recipesToCook, filteredRecipeIDByTag)
+    displayFilteredRecipes(filteredRecipeIDByTag, currentUser.recipesToCook)
     // if user deselects tag while in view saved recipes
   } else if (!clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View All") {
-    displayFilteredRecipes(recipeData, currentUser.recipesToCook)
+    displayFilteredRecipes(currentUser.recipesToCook, currentUser.recipesToCook)
   } else {
     // if no tags are selected
     displayFilteredRecipes(recipeData, currentUser.recipesToCook)
