@@ -274,7 +274,7 @@ p {
   width: 50px;
   border-radius: 15px;
   margin: 2px;
-  filter: grayscale(60%);
+  filter: grayscale(50%);
 }
 
 tag-btn:hover {
@@ -284,7 +284,14 @@ tag-btn:hover {
 .tag-btn:hover {
   background-color: #cccccc;
   transition: transform 0.3s ease-in-out;
-  transform: scale(1.1);
+  transform: scale(1.2);
+  filter:grayscale(30%)
+}
+
+.tag-btn-active {
+  filter:grayscale(30%);
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.2);
 }
 
 .food-icon {
