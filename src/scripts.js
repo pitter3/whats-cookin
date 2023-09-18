@@ -389,7 +389,7 @@ function updateIngredients() {
 
   let ingredientsHtml = "";
   ingredients.forEach((ingredientEl) => {
-    ingredientsHtml += `<li><input type="checkbox"> ${ingredientEl}</li>`;
+    ingredientsHtml += `<li><input type="checkbox" id="ing-checkbox"> ${ingredientEl}</li>`;
   });
   modalIngredients.innerHTML = ingredientsHtml;
 }
@@ -405,13 +405,13 @@ function updateTags() {
 
 function createCurrencyDropdown() {
   const currencyDropDown = document.createElement("div");
-  currencyDropDown.innerHTML = `<label for="currencies" class="choose-currency">Choose a currency</label>
+  currencyDropDown.innerHTML = `<label for="currencies" class="choose-currency">Choose a currency: </label>
     <select tabindex="0" name="currencies" class="currencies-dropdown" id="currencies-dropdown">
       <option value="USD">Choose Currency</option>
-      <option value="usd">USD</option>
-      <option value="cad">CAD</option>
-      <option value="eur">EUROS</option>
-      <option value="jpy">JAPANESE YEN</option>
+      <option value="usd">🇺🇸 USD</option>
+      <option value="cad">🇨🇦 CAD</option>
+      <option value="eur">🇪🇺 EUROS</option>
+      <option value="jpy">🇯🇵 JAPANESE YEN</option>
     </select>`;
   modalCost.insertAdjacentElement("afterend", currencyDropDown);
   
