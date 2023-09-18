@@ -364,7 +364,12 @@ li {
 }
 
 .none-saved {
-  color: red;
   padding-top: 22px;
   font-size: 16px;
+}
+
+#ing-checkbox {
+  cursor:pointer;
+  width: 16px;
+  height: 16px;
 }
