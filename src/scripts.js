@@ -375,7 +375,7 @@ function updateDirections() {
   let directionsHtml = "";
   directions.forEach((directionsEl, index) => {
     let stepNumber = index + 1;
-    directionsHtml += `<li><strong>Step${stepNumber}:</strong> ${directionsEl}</li><br>`;
+    directionsHtml += `<li><strong>Step ${stepNumber}:</strong> ${directionsEl}</li><br>`;
   });
   modalDirections.innerHTML = directionsHtml;
 }
@@ -389,7 +389,7 @@ function updateIngredients() {
 
   let ingredientsHtml = "";
   ingredients.forEach((ingredientEl) => {
-    ingredientsHtml += `<li>- ${ingredientEl}</li>`;
+    ingredientsHtml += `<li><input type="checkbox"> ${ingredientEl}</li>`;
   });
   modalIngredients.innerHTML = ingredientsHtml;
 }
