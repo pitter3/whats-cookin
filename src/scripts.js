@@ -240,10 +240,8 @@ function handleTagButtonClick(event) {
 
     allTagButtons.forEach((tagButton) => {
       if (tagButton === clickedTag) {
-        // console.log(tagButton.nextSibling)
         clickedTag.nextSibling.classList.toggle('bold');
         clickedTag.classList.toggle('tag-btn-active')
-        // console.log("after click:", clickedTag.nextSibling)
       } else {
         tagButton.nextSibling.classList.remove('bold')
         tagButton.classList.remove('tag-btn-active')
@@ -251,30 +249,26 @@ function handleTagButtonClick(event) {
     });
   }
 
-    // if user clicks on view saved recipes
+    // user clicks on view saved recipes button
   if (clickedTag === savedRecipesBtn) {
     const filteredRecipeIDByTag = returnFilteredTag(recipeData, tagClicked);
     displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
-    // if user clicks on a tag
+    // user clicks on a tag while in main display
   } else if (clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View Saved Recipes") {
     const filteredRecipeIDByTag = returnFilteredTag(recipeData, tagClicked);
     displayFilteredRecipes(filteredRecipeIDByTag, currentUser.recipesToCook)
-    // if user deselects tag while in view all
+    // user deselects tag while in view all display
   } else if (!clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View Saved Recipes") {
     displayFilteredRecipes(recipeData, currentUser.recipesToCook)
-    // if user clicks on tag while in view saved recipes
+    // user clicks on a tag while in view saved recipes display
   } else if (clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View All") {
-    const filteredRecipeIDByTag = returnFilteredTag(
-      currentUser.recipesToCook,
-      tagClicked
-    );
-    // displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
+    const filteredRecipeIDByTag = returnFilteredTag(currentUser.recipesToCook, tagClicked);
     displayFilteredRecipes(filteredRecipeIDByTag, currentUser.recipesToCook)
-    // if user deselects tag while in view saved recipes
+    // user deselects tag while in view saved recipes display
   } else if (!clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View All") {
     displayFilteredRecipes(currentUser.recipesToCook, currentUser.recipesToCook)
   } else {
-    // if no tags are selected
+    // no tags are selected
     displayFilteredRecipes(recipeData, currentUser.recipesToCook)
   }
 }
