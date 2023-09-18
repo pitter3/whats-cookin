@@ -166,17 +166,19 @@ recipeDisplay.addEventListener("click", (event) => {
   if (event.target.innerText === "Save Recipe") {
     event.target.innerText = "✓ Saved";
     event.target.style.backgroundColor = "#89ce94";
-    clickedRecipe = clickedId;
+    clickedRecipe = clickedId; // update clickedrecipe with correct id
     saveRecipe(recipeData, currentUser.recipesToCook, clickedId);
     sendPostRequest(currentUser, clickedRecipe);
   } else if (event.target.innerText === "✓ Saved") {
     event.target.innerText = "Save Recipe";
     event.target.style.backgroundColor = "#e5e7e9";
-    deleteRecipe(currentUser.recipesToCook, clickedId);
+    clickedRecipe = clickedId; // update clickedrecipe with correct id
     sendDeleteRequest(currentUser, clickedRecipe);
+    deleteRecipe(currentUser.recipesToCook, clickedId);
   } else if (event.target.innerText === "Remove Recipe") {
-    deleteRecipe(currentUser.recipesToCook, clickedId);
+    clickedRecipe = clickedId; // update clickedrecipe with correct id
     sendDeleteRequest(currentUser, clickedRecipe);
+    deleteRecipe(currentUser.recipesToCook, clickedId);
     displayRecipes(currentUser.recipesToCook, "Remove Recipe");
     displayTags(currentUser.recipesToCook);
   }
@@ -238,10 +240,8 @@ function handleTagButtonClick(event) {
 
     allTagButtons.forEach((tagButton) => {
       if (tagButton === clickedTag) {
-        // console.log(tagButton.nextSibling)
         clickedTag.nextSibling.classList.toggle('bold');
         clickedTag.classList.toggle('tag-btn-active')
-        // console.log("after click:", clickedTag.nextSibling)
       } else {
         tagButton.nextSibling.classList.remove('bold')
         tagButton.classList.remove('tag-btn-active')
@@ -249,30 +249,26 @@ function handleTagButtonClick(event) {
     });
   }
 
-    // if user clicks on view saved recipes
+    // user clicks on view saved recipes button
   if (clickedTag === savedRecipesBtn) {
     const filteredRecipeIDByTag = returnFilteredTag(recipeData, tagClicked);
     displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
-    // if user clicks on a tag
+    // user clicks on a tag while in main display
   } else if (clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View Saved Recipes") {
     const filteredRecipeIDByTag = returnFilteredTag(recipeData, tagClicked);
     displayFilteredRecipes(filteredRecipeIDByTag, currentUser.recipesToCook)
-    // if user deselects tag while in view all
+    // user deselects tag while in view all display
   } else if (!clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View Saved Recipes") {
     displayFilteredRecipes(recipeData, currentUser.recipesToCook)
-    // if user clicks on tag while in view saved recipes
+    // user clicks on a tag while in view saved recipes display
   } else if (clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View All") {
-    const filteredRecipeIDByTag = returnFilteredTag(
-      currentUser.recipesToCook,
-      tagClicked
-    );
-    // displayRecipes(filteredRecipeIDByTag, "Remove Recipe");
+    const filteredRecipeIDByTag = returnFilteredTag(currentUser.recipesToCook, tagClicked);
     displayFilteredRecipes(filteredRecipeIDByTag, currentUser.recipesToCook)
-    // if user deselects tag while in view saved recipes
+    // user deselects tag while in view saved recipes display
   } else if (!clickedTag.nextSibling.classList.contains("bold") && savedRecipesBtn.innerHTML === "View All") {
     displayFilteredRecipes(currentUser.recipesToCook, currentUser.recipesToCook)
   } else {
-    // if no tags are selected
+    // no tags are selected
     displayFilteredRecipes(recipeData, currentUser.recipesToCook)
   }
 }
@@ -379,7 +375,7 @@ function updateDirections() {
   let directionsHtml = "";
   directions.forEach((directionsEl, index) => {
     let stepNumber = index + 1;
-    directionsHtml += `<li><strong>Step${stepNumber}:</strong> ${directionsEl}</li><br>`;
+    directionsHtml += `<li><strong>Step ${stepNumber}:</strong> ${directionsEl}</li><br>`;
   });
   modalDirections.innerHTML = directionsHtml;
 }
@@ -393,7 +389,7 @@ function updateIngredients() {
 
   let ingredientsHtml = "";
   ingredients.forEach((ingredientEl) => {
-    ingredientsHtml += `<li>- ${ingredientEl}</li>`;
+    ingredientsHtml += `<li><input type="checkbox" id="ing-checkbox"> ${ingredientEl}</li>`;
   });
   modalIngredients.innerHTML = ingredientsHtml;
 }
@@ -402,20 +398,20 @@ function updateTags() {
   const tags = returnRecipeTags(recipeData, idClicked);
   let tagsHtml = "";
   tags.forEach((tagsEl) => {
-    tagsHtml += `<li>${tagsEl}</li>`;
+    tagsHtml += `<li><img src="/images/${tagsEl}.png" alt="${tagsEl}" style="width: 30px; height: 30px;">  ${tagsEl}</li><br>`;
   });
   modalTags.innerHTML = tagsHtml;
 }
 
 function createCurrencyDropdown() {
   const currencyDropDown = document.createElement("div");
-  currencyDropDown.innerHTML = `<label for="currencies" class="choose-currency">Choose a currency</label>
+  currencyDropDown.innerHTML = `<label for="currencies" class="choose-currency">Choose a currency: </label>
     <select tabindex="0" name="currencies" class="currencies-dropdown" id="currencies-dropdown">
       <option value="USD">Choose Currency</option>
-      <option value="usd">USD</option>
-      <option value="cad">CAD</option>
-      <option value="eur">EUROS</option>
-      <option value="jpy">JAPANESE YEN</option>
+      <option value="usd">🇺🇸 USD</option>
+      <option value="cad">🇨🇦 CAD</option>
+      <option value="eur">🇪🇺 EUROS</option>
+      <option value="jpy">🇯🇵 JAPANESE YEN</option>
     </select>`;
   modalCost.insertAdjacentElement("afterend", currencyDropDown);
   
