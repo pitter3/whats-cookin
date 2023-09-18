@@ -172,13 +172,14 @@ recipeDisplay.addEventListener("click", (event) => {
   } else if (event.target.innerText === "✓ Saved") {
     event.target.innerText = "Save Recipe";
     event.target.style.backgroundColor = "#e5e7e9";
-
+    // console.log(clickedRecipe)
+    clickedRecipe = clickedId;
     sendDeleteRequest(currentUser, clickedRecipe);
-    console.log(clickedId)
+    // console.log(clickedRecipe)
     deleteRecipe(currentUser.recipesToCook, clickedId);
   } else if (event.target.innerText === "Remove Recipe") {
     // console.log(clickedRecipe)
-    clickedRecipe = clickedId // update clickedrecipe with correct id
+    clickedRecipe = clickedId; // update clickedrecipe with correct id
     // console.log(clickedRecipe)
     sendDeleteRequest(currentUser, clickedRecipe);
     deleteRecipe(currentUser.recipesToCook, clickedId);
