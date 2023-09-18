@@ -230,10 +230,10 @@ p {
   width: 30rem;
 }
 .input-name::placeholder {
-  font-family: "Cedarville Cursive";
+  font-size: 15px;
 }
 .input-ingredient::placeholder {
-  font-family: "Cedarville Cursive";
+  font-size: 15px;
 }
 
 .input-ingredient {
@@ -256,9 +256,9 @@ p {
   border: none;
   border-radius: 100rem;
   padding: 0.8rem;
-  font-size: 1.2rem;
-  width: 15rem;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  width: 17rem;
+  margin-bottom: 30px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
   font-weight: 300;
 }
@@ -284,7 +284,14 @@ tag-btn:hover {
 .tag-btn:hover {
   background-color: #cccccc;
   transition: transform 0.3s ease-in-out;
-  transform: scale(1.1);
+  transform: scale(1.2);
+  filter:grayscale(30%)
+}
+
+.tag-btn-active {
+  filter:grayscale(30%);
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.2);
 }
 
 .food-icon {
@@ -352,4 +359,10 @@ li {
 
 .is-not-saved {
   background-color: #e5e7e9;
+}
+
+.none-saved {
+  color: red;
+  padding-top: 22px;
+  font-size: 16px;
 }
