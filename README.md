@@ -15,7 +15,7 @@
 View delicious meals, sauces, desserts and more from over 40 different recipes! Search for specific recipes based on ingredients or name. Filter recipes with the included filters. Click on a recipe for a detailed ingredients and directions pop-up. Save a recipe to the saved recipe section by clicking the button on the bottom of the recipe container.
 
 ## Preview of App:
-![whatscookin](https://github.com/joh-ann/whats-cookin/assets/126308696/d4d00e27-c87b-4b5e-8843-7e1c1fd5932c)
+![whatscookin](https://github.com/joh-ann/whats-cookin/assets/126308696/04ee4337-e11a-4e10-8871-48a63030f417)
 
 ## Contributors:
 [Johann Dee](https://github.com/joh-ann)
@@ -25,7 +25,7 @@ View delicious meals, sauces, desserts and more from over 40 different recipes! 
 [Patrick Eitel](https://github.com/pitter3)
 
 ## Context:
-This is our first group project of Mod 2 at Turing School of Software & Design. We were given ~1 week to create this project from scratch using a provided comp found [here](https://frontend.turing.edu/projects/module-2/whats-cookin-part-one.html).
+This is our first group project of Mod 2 at Turing School of Software & Design. We were given three weeks to create this project from scratch using a provided comp found [here](https://frontend.turing.edu/projects/module-2/whats-cookin-part-one.html) and [here](https://frontend.turing.edu/projects/module-2/whats-cookin-part-two-agile.html).
 
 ## Learning Goals:
 - Use object and array prototype methods to perform data manipulation.
@@ -35,12 +35,22 @@ This is our first group project of Mod 2 at Turing School of Software & Design. 
 - Make network requests to retrieve data.
 - Collaborate productively and professionally as a team. Ensure all team members are able to be heard and contribute throughout the project.
 
-### Installation Instructions:
+## Installation Instructions:
 View on [GitHub Pages](https://joh-ann.github.io/whats-cookin/)
 
+This application requires access to both our backend server repository and front-end repository.
+
+### Backend Server Setup:
+1. Fork [this](https://github.com/joh-ann/whats-cookin-api) repository.
+2. Clone it to your location machine using: `git clone git@github.com:joh-ann/whats-cookin-api.git`
+3. Run the command: `cd whats-cookin-api`
+4. Run the command: `npm install`
+5. Run the command: `npm start`
+
+### Front-end Client Setup 
 1. Fork this repository.
-2. Clone it to your local machine.
+2. Clone it to your local machine using: `git clone git@github.com:joh-ann/whats-cookin.git`
 3. Run the command: `cd whats-cookin`
 4. Run the command: `npm install`
 5. Run the command: `npm start`
-6. Once the modules have finished compiling, enter `http://localhost:8080/` into your browser to see the live web page.
+6. View the live web page by entering http://localhost:8080/ into your browser's address bar.
