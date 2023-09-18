@@ -398,7 +398,7 @@ function updateTags() {
   const tags = returnRecipeTags(recipeData, idClicked);
   let tagsHtml = "";
   tags.forEach((tagsEl) => {
-    tagsHtml += `<li>${tagsEl}</li>`;
+    tagsHtml += `<li><img src="/images/${tagsEl}.png" alt="${tagsEl}" style="width: 30px; height: 30px;">  ${tagsEl}</li><br>`;
   });
   modalTags.innerHTML = tagsHtml;
 }

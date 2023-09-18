@@ -164,7 +164,10 @@ button:hover {
 .modal-tags {
   display: flex;
   flex-direction: column;
-  width: 10vw;
+  width: 12vw;
+  height: 60vh;
+  overflow-y: auto;
+  margin-top: 55px;
 }
 
 ul {
@@ -339,7 +342,7 @@ tag-btn:hover {
 }
 
 .modal-tags {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 li {
