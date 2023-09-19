@@ -6,7 +6,7 @@ const tagButtons = document.querySelector(".tag-buttons");
 export function displayRecipes(recipes, innerText) {
   let recipeHTML = ``;
   recipes.forEach((recipeEl) => {
-    recipeHTML += `<div tabindex="0" class="recipe-card"><div class="title-recipe" id="${recipeEl.id}">${recipeEl.name}</div>
+    recipeHTML += `<div tabindex="0" class="recipe-card" id=${recipeEl.id}><div class="title-recipe" id="${recipeEl.id}">${recipeEl.name}</div>
     <img
       src="${recipeEl.image}"
       alt="${recipeEl.image}"
@@ -48,7 +48,7 @@ export function displayFilteredRecipes(recipeData, currentUserRecipes) {
       buttonClass = "is-not-saved";
     }
 
-    filteredRecipeHTML += `<div class="recipe-card"><div class="title-recipe" id=${recipe.id}>${recipe.name}</div>
+    filteredRecipeHTML += `<div class="recipe-card" id=${recipe.id}><div class="title-recipe" id=${recipe.id}>${recipe.name}</div>
     <img
       src="${recipe.image}"
       alt="recipe-img"
