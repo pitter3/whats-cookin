@@ -15,7 +15,8 @@
 View delicious meals, sauces, desserts and more from over 40 different recipes! Search for specific recipes based on ingredients or name. Filter recipes with the included filters. Click on a recipe for a detailed ingredients and directions pop-up. Save a recipe to the saved recipe section by clicking the button on the bottom of the recipe container.
 
 ## Preview of App:
-![whatscookin](https://github.com/joh-ann/whats-cookin/assets/126308696/04ee4337-e11a-4e10-8871-48a63030f417)
+![whatscookin](https://github.com/joh-ann/whats-cookin/assets/126308696/ffeadc63-5da7-4367-9dde-e27f681856a1)
+
 
 ## Contributors:
 [Johann Dee](https://github.com/joh-ann)
