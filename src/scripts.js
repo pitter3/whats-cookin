@@ -287,6 +287,7 @@ recipeDisplay.addEventListener("keydown", (event) => {
 
 function handleRecipeDisplayEvent(event) {
   idClicked = event.target.id;
+  console.log(idClicked)
   if (idClicked.length === 6) {
     createModal();
     updateCost();
