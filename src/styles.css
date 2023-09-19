@@ -124,10 +124,20 @@ button:hover {
   visibility: hidden;
   z-index: -10;
 }
-
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with opacity 0 */
+    transform: scale(0.99); /* Start slightly scaled down */
+  }
+  to {
+    opacity: 1; /* End with full opacity */
+    transform: scale(1); /* End with normal scale */
+  }
+}
 .open-modal {
   visibility: visible;
   z-index: 10;
+  animation: fadeIn 0.5s ease-in-out; /* Add a fade-in animation */
 }
 .modal-container {
   background-image: linear-gradient(
