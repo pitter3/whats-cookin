@@ -85,6 +85,10 @@ let fetchedCad = null;
 let fetchedUsd = null;
 let fetchedEuro = null;
 let fetchedYen = null;
+let fetchedGbp = null;
+let fetchedNzd = null;
+let fetchedPeso = null;
+let fetchedBtc = null;
 
 fetchCurrenciesCode().then((currencies) => {
   fetchedCodes = currencies;
@@ -98,6 +102,10 @@ fetchCurrencies().then((currenciesRates) => {
   fetchedUsd = fetchedRates.usd["usd"];
   fetchedEuro = fetchedRates.usd["eur"];
   fetchedYen = fetchedRates.usd["jpy"];
+  fetchedGbp = fetchedRates.usd["gbp"];
+  fetchedNzd = fetchedRates.usd["nzd"];
+  fetchedPeso = fetchedRates.usd["mxn"];
+  fetchedBtc = fetchedRates.usd["btc"];
   console.log(fetchedCad);
   console.log(fetchedUsd);
   console.log(fetchedEuro);
@@ -409,11 +417,16 @@ function createCurrencyDropdown() {
   currencyDropDown.innerHTML = `<label for="currencies" class="choose-currency">Choose a currency: </label>
     <select tabindex="0" name="currencies" class="currencies-dropdown" id="currencies-dropdown">
       <option value="USD">Choose Currency</option>
-      <option value="usd">🇺🇸 USD</option>
-      <option value="cad">🇨🇦 CAD</option>
+      <option value="usd">🇺🇸 US DOLLAR</option>
+      <option value="cad">🇨🇦 CANADIAN DOLLAR</option>
       <option value="eur">🇪🇺 EUROS</option>
       <option value="jpy">🇯🇵 JAPANESE YEN</option>
+      <option value="gpb">🇬🇧 ENGLISH POUND</option>
+      <option value="nzd">🇳🇿 NEW ZEALAND DOLLAR</option>
+      <option value="mxn">🇲🇽 MEXICAN PESOS</option>
+      <option value="btc">₿ BITCOIN</option>
     </select>`;
+    
   modalCost.insertAdjacentElement("afterend", currencyDropDown);
   
   const selectMenu = document.querySelector("#currencies-dropdown");
@@ -447,6 +460,18 @@ function returnUpdatedCost(currencySelected, costSelected) {
   } else if (currencySelected === "jpy") {
     const yenCost = costSelected * fetchedYen;
     return Math.round(yenCost);
+  } else if (currencySelected === "gpb") {
+    const gbpCost = costSelected * fetchedGbp;
+    return Math.round(gbpCost);
+  } else if (currencySelected === "nzd") {
+    const nzdCost = costSelected * fetchedNzd;
+    return Math.round(nzdCost);
+  } else if (currencySelected === "mxn") {
+    const mxnCost = costSelected * fetchedPeso;
+    return Math.round(mxnCost);
+  } else if (currencySelected === "btc") {
+    const btcCost = costSelected * fetchedBtc;
+    return btcCost.toFixed(4);
   } else {
     const usdCost = costSelected * fetchedUsd;
     return Math.round(usdCost);

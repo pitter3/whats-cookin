@@ -59,6 +59,7 @@ h1 {
   border-radius: 35px;
 }
 .recipe-card:hover {
+  cursor: pointer;
   transition: transform 0.3s ease-in-out;
   transform: scale(1.1);
 }
