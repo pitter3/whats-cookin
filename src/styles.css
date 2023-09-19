@@ -44,7 +44,7 @@ h1 {
   width: 80%;
   overflow-y: scroll;
   font-weight: bolder;
-  padding-top: 2em;
+  padding: 2em;
 }
 
 .recipe-card {
