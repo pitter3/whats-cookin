@@ -1,3 +1,16 @@
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(141, 130, 130); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,11 +53,12 @@ h1 {
   gap: 50px;
   align-items: flex-start;
   justify-content: center;
-  height: 750px;
+  height: 850px;
   width: 80%;
   overflow-y: scroll;
   font-weight: bolder;
   padding-top: 2em;
+  padding-bottom: 1em;
 }
 
 .recipe-card {
