@@ -1,3 +1,16 @@
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(141, 130, 130); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,11 +53,12 @@ h1 {
   gap: 50px;
   align-items: flex-start;
   justify-content: center;
-  height: 750px;
+  height: 850px;
   width: 80%;
   overflow-y: scroll;
   font-weight: bolder;
-  padding: 2em;
+  padding-top: 2em;
+  padding-bottom: 1em;
 }
 
 .recipe-card {
@@ -111,9 +125,21 @@ button:hover {
   z-index: -10;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0; 
+    transform: scale(0.99); 
+  }
+  to {
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
 .open-modal {
   visibility: visible;
   z-index: 10;
+  animation: fadeIn 0.4s linear; /* Add a fade-in animation */
 }
 .modal-container {
   background-image: linear-gradient(
